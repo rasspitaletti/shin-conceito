@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+
+/* ───────── Design tokens: bronze, marrom e creme com destaques dourados ───────── */
+@theme {
+  --font-sans: 'Inter Tight', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif; /* títulos serifados finos */
+  --font-narrow: 'Inter Tight', 'Inter', system-ui, sans-serif; /* frases curtas em caixa alta */
+
+  --color-forest: #2a1d15; /* marrom café: blocos escuros */
+  --color-moss: #3a2a1f;
+  --color-olive: #6b4c35; /* bronze escuro */
+  --color-sage: #c4a27a; /* bronze claro: segunda cor sobre o escuro */
+  --color-sage-soft: #dcc3a1;
+  --color-cream: #f1e6d6; /* texto sobre o escuro */
+  --color-sand: #e3cdb0; /* botão pílula */
+  --color-paper: #e6d6c1; /* fundo principal: bronze claro */
+  --color-tan: #d4b994; /* fundo bronze mais intenso (seção da Dra.) */
+  --color-white: #f5ecdf; /* cards em creme quente */
+  --color-ink: #24170f;
+  --color-muted: #6a5242;
+  --color-green: #22271e; /* verde oliva escuro (destaques) */
+  --color-green-mid: #2e3428;
+  --color-gold: #a87a3e;
+  --color-gold-soft: #d8b47e;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-soft: 0 1px 2px rgb(36 23 15 / 0.04), 0 14px 34px -16px rgb(36 23 15 / 0.22);
+  --shadow-lift: 0 2px 4px rgb(36 23 15 / 0.05), 0 28px 54px -22px rgb(36 23 15 / 0.32);
+
+  /* tipografia fluida (320 → 1440) */
+  --text-mega: clamp(2.8rem, 1.2rem + 7vw, 7.2rem);
+  --text-h2: clamp(2rem, 1.35rem + 2.8vw, 4rem);
+  --text-h3: clamp(1.4rem, 1.2rem + 0.8vw, 1.85rem);
+  --text-word: clamp(2.6rem, 1.4rem + 4.4vw, 5.2rem);
+}
+
+:root {
+  --space-section: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  --container: 1280px;
+  --header-h: 84px;
+  --frame: clamp(0.5rem, 0.3rem + 0.8vw, 0.9rem); /* moldura em volta dos blocos escuros */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 8px);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    overflow-x: hidden;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    background: var(--color-olive);
+    color: var(--color-cream);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sage);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img {
+    user-select: none;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 0.7rem + 2.6vw, 2.75rem);
+  }
+  .section-y {
+    padding-block: var(--space-section);
+  }
+
+  /* títulos finos e grandes, como "GLOW BETTER" */
+  /* títulos serifados finos em caixa alta, estilo "YOUR BEST SELF, REFINED." */
+  .mega {
+    font-family: var(--font-display);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    line-height: 0.95;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  /* frase curta em caixa alta, estilo "ADVANCED CARE. NATURAL RESULTS." */
+  .narrow {
+    font-family: var(--font-narrow);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    line-height: 1.5;
+  }
+  /* destaque dourado: itálico serifado com brilho metálico (combina com a logo) */
+  .accent {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    font-size: 1em;
+    line-height: 0.95;
+    /* área extra para o gradiente cobrir acentos (Ê, Á…) sem mudar o layout */
+    padding: 0.18em 0.04em 0.08em 0;
+    margin: -0.18em 0 -0.08em 0;
+    background: linear-gradient(100deg, #c08f4f 0%, #f0d6a3 38%, #c69a5a 62%, #e5c58d 82%, #a87a3e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  /* versão mais escura para fundos claros (contraste) */
+  .accent-dark {
+    background: linear-gradient(100deg, #6e4719 0%, #9a6a2f 40%, #7d5322 70%, #8f6230 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* blocos escuros com cantos arredondados (moldura da referência) */
+  .frame {
+    margin-inline: var(--frame);
+    border-radius: clamp(1.25rem, 0.8rem + 1.6vw, 2.2rem);
+  }
+
+  .glass {
+    background: rgb(245 236 223 / 0.74);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgb(255 255 255 / 0.6);
+  }
+  .glass-dark {
+    background: rgb(58 42 31 / 0.55);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    border: 1px solid rgb(241 230 214 / 0.14);
+  }
+
+  /* botões pílula */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    min-height: 3rem;
+    padding: 0.8rem 1.45rem;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    isolation: isolate;
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+      transform 0.45s var(--ease-soft),
+      box-shadow 0.45s var(--ease-soft),
+      color 0.45s var(--ease-soft),
+      border-color 0.45s var(--ease-soft);
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--ease-soft);
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:hover::before {
+    transform: scaleX(1);
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+  .btn .btn-icon {
+    transition: transform 0.45s var(--ease-soft);
+  }
+  .btn:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+  .btn-sand {
+    background: var(--color-sand);
+    color: var(--color-ink);
+  }
+  .btn-sand::before {
+    background: var(--color-white);
+  }
+  .btn-dark {
+    background: var(--color-forest);
+    color: var(--color-cream);
+  }
+  .btn-dark::before {
+    background: var(--color-olive);
+  }
+  .btn-line {
+    color: var(--color-ink);
+    border: 1px solid rgb(36 23 15 / 0.18);
+  }
+  .btn-line::before {
+    background: var(--color-forest);
+  }
+  .btn-line:hover {
+    color: var(--color-cream);
+    border-color: var(--color-forest);
+  }
+  .btn-line-light {
+    color: var(--color-cream);
+    border: 1px solid rgb(241 230 214 / 0.3);
+  }
+  .btn-line-light::before {
+    background: var(--color-cream);
+  }
+  .btn-line-light:hover {
+    color: var(--color-ink);
+  }
+
+  .round {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    transition:
+      background-color 0.4s var(--ease-soft),
+      color 0.4s var(--ease-soft),
+      transform 0.4s var(--ease-soft),
+      border-color 0.4s var(--ease-soft);
+  }
+
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-soft);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current='true']::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .img-zoom img {
+    transition: transform 1.2s var(--ease-soft);
+  }
+  .img-zoom:hover img {
+    transform: scale(1.05);
+  }
+
+  /* bloco verde oliva com brilho suave */
+  .green-texture {
+    background-color: var(--color-green);
+    background-image:
+      radial-gradient(60% 50% at 18% 20%, rgb(162 168 140 / 0.14), transparent 70%),
+      radial-gradient(50% 60% at 90% 90%, rgb(75 82 63 / 0.6), transparent 70%);
+  }
+  /* textura sutil de luz e folhagem nos blocos escuros */
+  .dark-texture {
+    background-color: var(--color-forest);
+    background-image:
+      radial-gradient(60% 50% at 18% 20%, rgb(196 162 122 / 0.14), transparent 70%),
+      radial-gradient(50% 60% at 90% 90%, rgb(107 76 53 / 0.55), transparent 70%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+}
