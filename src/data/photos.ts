@@ -30,12 +30,12 @@ export const photos = {
   // Catálogo de serviços
   avaliacao: { src: svAvaliacao, alt: 'Rosto de paciente visto de perfil, durante a avaliação facial' },
   harmonizacao: { src: svHarmonizacao, alt: 'Rosto de paciente após o tratamento, com traços naturais', pos: '50% 35%' },
-  bioestimulacao: { src: svBioestimulacao, alt: 'Pele do rosto de paciente após o tratamento' },
+  bioestimulacao: { src: svBioestimulacao, alt: 'Paciente de olhos fechados, com marcações na pele do rosto e aplicadores durante o procedimento' },
   biorregeneracao: { src: svBiorregeneracao, alt: 'Paciente sorrindo, com a pele uniforme após o tratamento' },
   toxina: { src: svToxina, alt: 'Testa de paciente, lisa, após a aplicação' },
   preenchimento: { src: svPreenchimento, alt: 'Aplicação nos lábios feita com luvas e seringa', pos: '50% 40%' },
   skinbooster: { src: svSkinbooster, alt: 'Pele do rosto de paciente com viço, após o tratamento' },
-  microagulhamento: { src: svMicroagulhamento, alt: 'Paciente de olhos fechados, com marcações na pele do rosto durante o procedimento' },
+  microagulhamento: { src: svMicroagulhamento, alt: 'Pele do rosto de paciente com textura uniforme, após o tratamento' },
   limpeza: { src: svLimpeza, alt: 'Pele do rosto de paciente vista de perfil' },
   semAgulhas: { src: svSemAgulhas, alt: 'Boca e queixo de paciente, com a pele cuidada' },
   // Experiência e agendamento
