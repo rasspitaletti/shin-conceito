@@ -1,5 +1,5 @@
 // Fotos reais da clínica ficam em src/assets/img (`src`).
-// A modelo e os ambientes de clínica são ilustrativos, do Unsplash (`id`). Quando houver fotos do espaço real, importe o arquivo e use `src`.
+// `id` aponta para foto do Unsplash; hoje todas as fotos usam `src` (arquivos reais).
 import resDerretimento from '../assets/img/resultado-derretimento.webp'
 import resTesta from '../assets/img/resultado-testa.webp'
 import resLabios from '../assets/img/resultado-labios.webp'
@@ -19,6 +19,10 @@ import svSemAgulhas from '../assets/img/servico-sem-agulhas.webp'
 import procAplicacao from '../assets/img/procedimento-aplicacao.webp'
 import procMarcacao from '../assets/img/procedimento-marcacao.webp'
 import clinicaAtendimento from '../assets/img/clinica-atendimento.webp'
+import ambSala from '../assets/img/ambiente-sala.jpg'
+import ambBancada from '../assets/img/ambiente-bancada.jpg'
+import ambVitrine from '../assets/img/ambiente-vitrine.jpg'
+import ambCertificados from '../assets/img/ambiente-certificados.jpg'
 
 export type Photo = { id?: string; src?: string; alt: string; pos?: string }
 export type GalleryPhoto = Photo & { title: string; text: string }
@@ -39,10 +43,10 @@ export const photos = {
   limpeza: { src: svLimpeza, alt: 'Pele do rosto de paciente vista de perfil' },
   semAgulhas: { src: svSemAgulhas, alt: 'Boca e queixo de paciente, com a pele cuidada' },
   // Experiência e agendamento
-  ambiente: { id: '1554151228-14d9def656e4', alt: 'Retrato de mulher com pele natural, cabelo preso e mão no queixo', pos: '50% 78%' },
-  clinicaSala: { id: '1693578538512-fc66f318c833', alt: 'Ambiente de clínica em tons de marrom, com poltronas e macas', pos: '50% 60%' },
-  clinicaRecepcao: { id: '1721045028160-3637f5063047', alt: 'Recepção de clínica clara, com balcão de madeira e luminárias' },
-  agendamento: { id: '1648775507324-b48dd3791fa5', alt: 'Ambiente de clínica amplo e claro, com uma árvore no centro' },
+  ambiente: { src: ambSala, alt: 'Sala de atendimento da clínica, com cadeira de procedimento branca, luminária e quadros de harmonização facial na parede', pos: '50% 60%' },
+  clinicaSala: { src: ambBancada, alt: 'Bancada da clínica com produtos de skincare e bandeja com copos e balas para as pacientes', pos: '50% 75%' },
+  clinicaRecepcao: { src: ambVitrine, alt: 'Vitrine iluminada com produtos Anna Pegova, ao lado de parede ripada de madeira e uma planta', pos: '50% 45%' },
+  agendamento: { src: ambCertificados, alt: 'Certificados da Dra. Patrícia Silva emoldurados, com a frase "Aqui tem Deus em cada detalhe" à frente' },
 } satisfies Record<string, Photo>
 
 // Galeria "Cuidado em cada detalhe": procedimentos e atendimento
