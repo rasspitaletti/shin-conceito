@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react'
 import { site, wa } from '../data/site'
 import { SectionLabel } from './SectionLabel'
 import { Notch } from './Notch'
-import portrait from '../assets/img/patricia-retrato.webp'
+import portrait from '../assets/img/patricia-retrato.jpg'
 
 const areas = ['Harmonização Facial Natural', 'Bioestimulação Estratégica', 'Biorregeneração da Pele']
 
@@ -13,14 +13,14 @@ export function About() {
         {/* fotos reais da Dra. Patrícia */}
         <div data-reveal className="relative">
           <div aria-hidden="true" className="absolute -bottom-4 -left-4 h-full w-full rounded-[1.8rem] border border-ink/30 sm:-bottom-5 sm:-left-5" />
-          <div className="relative aspect-[4/4.6] overflow-hidden rounded-[1.8rem] bg-sand">
+          <div className="relative aspect-square overflow-hidden rounded-[1.8rem] bg-sand">
             <img
               data-parallax
               src={portrait}
               alt="Dra. Patrícia Silva, responsável pela Shin Conceito Institute"
               loading="lazy"
-              width={1139}
-              height={1286}
+              width={900}
+              height={900}
               className="absolute -top-[6%] left-0 h-[112%] w-full object-cover object-[50%_25%]"
             />
             <Notch corner="tr" bg="text-tan" w="40%" h="3.6rem" />

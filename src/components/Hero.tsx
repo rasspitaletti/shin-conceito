@@ -2,8 +2,8 @@ import { ArrowRight, FlaskConical, Leaf, UserRound } from 'lucide-react'
 import { site } from '../data/site'
 import heroImg from '../assets/img/hero-beleza.webp'
 import heroMobile from '../assets/img/hero-beleza-mobile.webp'
-import emblemLight from '../assets/img/logo-emblema-claro.png'
-import portrait from '../assets/img/patricia-retrato.webp'
+import portrait from '../assets/img/patricia-retrato.jpg'
+import { Emblem } from './Logo'
 
 const trust = [
   { icon: Leaf, label: 'Beleza\nnatural' },
@@ -82,7 +82,7 @@ export function Hero() {
                 className="glass-dark hidden items-center gap-4 sm:flex rounded-[1.3rem] p-2.5 pr-5 transition hover:bg-moss/80"
               >
                 <span className="grid h-[72px] w-[72px] place-items-center rounded-[0.9rem] bg-forest/60">
-                  <img src={emblemLight} alt="" className="h-11 w-auto opacity-90" />
+                  <Emblem className="h-12 w-12" />
                 </span>
                 <span>
                   <span className="block text-[1.9rem] font-light leading-none tracking-[-0.04em]">{site.reviewsCount}</span>
