@@ -4,7 +4,7 @@ import { Hero } from './components/Hero'
 import { About } from './components/About'
 import { Catalog } from './components/Catalog'
 import { Gallery } from './components/Gallery'
-import { Results } from './components/Results'
+import { BeforeAfter, Results } from './components/Results'
 import { Experience } from './components/Experience'
 import { Testimonials } from './components/Testimonials'
 import { Location } from './components/Location'
@@ -27,6 +27,7 @@ export default function App() {
       <Header />
       <main id="conteudo">
         <Hero />
+        <BeforeAfter />
         <Catalog />
         <Gallery />
         <Results />

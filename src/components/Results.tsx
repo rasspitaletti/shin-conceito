@@ -47,6 +47,28 @@ function Compare({ r }: { r: Result }) {
   )
 }
 
+/** Antes e depois em destaque, logo após o topo, como o comparador que a cliente pediu. */
+export function BeforeAfter() {
+  const r = results[0]
+  return (
+    <section id="antes-e-depois" className="section-y" aria-labelledby="ba-title">
+      <div data-reveal className="container-x grid items-center gap-8 md:grid-cols-[1fr_minmax(0,26rem)] md:gap-14">
+        <div>
+          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-gold">Antes e depois</p>
+          <h2 id="ba-title" className="title mt-4 text-[clamp(1.8rem,1.3rem+2vw,3rem)] leading-tight">{r.title}</h2>
+          <p className="mt-4 max-w-sm leading-relaxed text-ink/75">Arraste o controle para comparar o antes e o depois.</p>
+          <p className="mt-3 max-w-sm text-[0.85rem] leading-relaxed text-ink/60">
+            As imagens mostram um caso individual. Os resultados variam de pessoa para pessoa.
+          </p>
+        </div>
+        <div className="w-full max-md:mx-auto max-md:max-w-[26rem]">
+          <Compare r={r} />
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /** Antes e depois. As fotos de cada linha têm a mesma altura e aparecem inteiras, sem cortes. */
 export function Results() {
   return (
@@ -66,19 +88,6 @@ export function Results() {
               Com o passar do tempo, podem surgir alterações na firmeza, no contorno e na qualidade da pele. Cada plano
               nasce de uma avaliação individualizada, para cuidar disso respeitando os seus traços.
             </p>
-          </div>
-
-          <div data-reveal className="mt-14 grid items-center gap-8 md:grid-cols-[minmax(0,26rem)_1fr] md:gap-14">
-            <div className="w-full max-md:mx-auto max-md:max-w-[26rem]">
-              <Compare r={results[0]} />
-            </div>
-            <div>
-              <p className="title text-[clamp(1.6rem,1.2rem+1.6vw,2.6rem)] leading-tight">{results[0].title}</p>
-              <p className="mt-4 max-w-sm leading-relaxed text-cream/70">Arraste o controle para comparar o antes e o depois.</p>
-              <p className="mt-3 max-w-sm text-[0.85rem] leading-relaxed text-cream/60">
-                As imagens mostram um caso individual. Os resultados variam de pessoa para pessoa.
-              </p>
-            </div>
           </div>
 
           {[results.slice(1, 3), results.slice(3)].map((row, i) => (
