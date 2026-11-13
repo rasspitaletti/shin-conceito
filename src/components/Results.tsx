@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { results, type Result } from '../data/photos'
 import { site } from '../data/site'
@@ -15,6 +15,35 @@ function Labels({ layout }: { layout: Result['layout'] }) {
       <span className={`${chip} ${side ? 'bottom-3 left-3' : 'left-3 top-3'}`}>Antes</span>
       <span className={`${chip} ${side ? 'bottom-3 left-[calc(50%+0.75rem)]' : 'left-3 top-[calc(50%+0.75rem)]'}`}>Depois</span>
     </>
+  )
+}
+
+/** Comparador de arrastar. Usa uma foto com antes (metade esquerda) e depois (metade direita) lado a lado. */
+function Compare({ r }: { r: Result }) {
+  const [pos, setPos] = useState(50)
+  // 202%: cada camada mostra só a sua metade, sem a faixa divisória; a proporção corta as etiquetas do rodapé
+  const img = 'absolute top-0 w-[202%] max-w-none'
+  return (
+    <div style={{ '--pos': `${pos}%` } as CSSProperties} className="relative aspect-[515/690] select-none overflow-hidden rounded-[1.4rem] bg-olive">
+      <img src={r.photo.src} alt={r.photo.alt} className={`${img} right-0`} />
+      <div aria-hidden="true" className="absolute inset-0 [clip-path:inset(0_calc(100%-var(--pos))_0_0)]">
+        <img src={r.photo.src} alt="" className={`${img} left-0`} />
+      </div>
+      <span className={`${chip} left-3 top-3`}>Antes</span>
+      <span className={`${chip} right-3 top-3`}>Depois</span>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-(--pos) w-px bg-cream">
+        <span className="absolute left-1/2 top-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-cream text-[0.8rem] text-ink shadow-lg">‹ ›</span>
+      </div>
+      <input
+        type="range"
+        min={0}
+        max={100}
+        value={pos}
+        onChange={(e) => setPos(+e.target.value)}
+        aria-label="Comparar antes e depois"
+        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+      />
+    </div>
   )
 }
 
@@ -39,7 +68,20 @@ export function Results() {
             </p>
           </div>
 
-          {[results.slice(0, 3), results.slice(3)].map((row, i) => (
+          <div data-reveal className="mt-14 grid items-center gap-8 md:grid-cols-[minmax(0,26rem)_1fr] md:gap-14">
+            <div className="w-full max-md:mx-auto max-md:max-w-[26rem]">
+              <Compare r={results[0]} />
+            </div>
+            <div>
+              <p className="title text-[clamp(1.6rem,1.2rem+1.6vw,2.6rem)] leading-tight">{results[0].title}</p>
+              <p className="mt-4 max-w-sm leading-relaxed text-cream/70">Arraste o controle para comparar o antes e o depois.</p>
+              <p className="mt-3 max-w-sm text-[0.85rem] leading-relaxed text-cream/60">
+                As imagens mostram um caso individual. Os resultados variam de pessoa para pessoa.
+              </p>
+            </div>
+          </div>
+
+          {[results.slice(1, 3), results.slice(3)].map((row, i) => (
             <ul key={i} data-stagger className={`flex flex-col gap-7 md:flex-row md:gap-4 ${i ? 'mt-7 md:mt-8' : 'mt-14'}`}>
               {row.map((r) => (
                 <li
