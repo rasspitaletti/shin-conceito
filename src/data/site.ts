@@ -31,9 +31,9 @@ export const site = {
 
 export const nav = [
   { id: 'inicio', label: 'Início' },
+  { id: 'profissionais', label: 'Profissionais' },
   { id: 'tratamentos', label: 'Tratamentos' },
   { id: 'resultados', label: 'Resultados' },
-  { id: 'dra-patricia', label: 'Dra. Patrícia' },
   { id: 'clinica', label: 'A clínica' },
   { id: 'depoimentos', label: 'Depoimentos' },
   { id: 'onde-estamos', label: 'Onde estamos' },

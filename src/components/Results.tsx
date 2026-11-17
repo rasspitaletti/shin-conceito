@@ -77,7 +77,7 @@ export function Results() {
         <div className="container-x section-y">
           <div data-reveal className="grid items-end gap-8 lg:grid-cols-[1fr_24rem] lg:gap-12">
             <div>
-              <SectionLabel n="02" light>Resultados</SectionLabel>
+              <SectionLabel n="03" light>Resultados</SectionLabel>
               <h2 id="res-title" className="mega mt-7 text-[clamp(2.1rem,1.2rem+3.6vw,4.4rem)]">
                 <span className="block">Menos exagero.</span>
                 <span className="block">Mais equilíbrio.</span>

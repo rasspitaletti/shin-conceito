@@ -38,7 +38,7 @@ export function Catalog() {
       <div className="container-x">
         <div data-reveal className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <div>
-            <SectionLabel n="01">Catálogo</SectionLabel>
+            <SectionLabel n="02">Catálogo</SectionLabel>
             <h2 id="cat-title" className="title mt-6 text-[length:var(--text-h2)]">
               Nossos <span className="accent accent-dark">tratamentos</span>
             </h2>

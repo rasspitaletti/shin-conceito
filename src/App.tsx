@@ -1,7 +1,7 @@
 import { Intro } from './components/Intro'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { About } from './components/About'
+import { Professionals } from './components/Professionals'
 import { Catalog } from './components/Catalog'
 import { Gallery } from './components/Gallery'
 import { BeforeAfter, Results } from './components/Results'
@@ -28,10 +28,10 @@ export default function App() {
       <main id="conteudo">
         <Hero />
         <BeforeAfter />
+        <Professionals />
         <Catalog />
         <Gallery />
         <Results />
-        <About />
         <Experience />
         <Testimonials />
         <Location />
