@@ -23,6 +23,11 @@ export const site = {
     line2: 'Salto, SP, 13322-000',
     building: 'Condomínio Edifício Novo Centro',
   },
+  address2: {
+    line1: 'Rua das Esmeraldas, 606, Salas 42 e 72, Jardim',
+    line2: 'Santo André, SP, 09090-770',
+    mapsLink: 'https://www.google.com/maps/search/?api=1&query=Rua+das+Esmeraldas+606+Jardim+Santo+Andre+SP+09090-770',
+  },
   mapsLink: 'https://www.google.com/maps/search/?api=1&query=Rua+Nove+de+Julho+709+Centro+Salto+SP',
   mapsEmbed:
     'https://www.google.com/maps?q=Rua+Nove+de+Julho,+709+-+Centro,+Salto+-+SP,+13322-000&output=embed',

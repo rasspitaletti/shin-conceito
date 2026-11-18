@@ -2,12 +2,23 @@ import { Clock, MapPin, Navigation, Phone } from 'lucide-react'
 import { site } from '../data/site'
 import { SectionLabel } from './SectionLabel'
 import { InstagramIcon, WhatsAppIcon } from './BrandIcons'
+import saPredio from '../assets/img/sa-predio.jpg'
+import saSala from '../assets/img/sa-sala.jpg'
+import saRecepcao from '../assets/img/sa-recepcao.jpg'
+import saLavabo from '../assets/img/sa-lavabo.jpg'
+
+const saPhotos = [
+  [saPredio, 'Fachada de vidro do edifício em Santo André'],
+  [saSala, 'Sala de atendimento com maca, em Santo André'],
+  [saRecepcao, 'Recepção com café e água, em Santo André'],
+  [saLavabo, 'Lavabo com espelho orgânico e detalhes dourados'],
+] as const
 
 export function Location() {
   const info = [
     {
       icon: MapPin,
-      label: 'Endereço',
+      label: 'Salto',
       body: (
         <a href={site.mapsLink} target="_blank" rel="noopener noreferrer" className="underline decoration-ink/20 underline-offset-4 transition hover:decoration-ink">
           {site.address.line1}
@@ -16,6 +27,27 @@ export function Location() {
           <br />
           {site.address.building}
         </a>
+      ),
+    },
+    {
+      icon: MapPin,
+      label: 'Santo André · atendimento quinzenal',
+      body: (
+        <>
+          <a href={site.address2.mapsLink} target="_blank" rel="noopener noreferrer" className="underline decoration-ink/20 underline-offset-4 transition hover:decoration-ink">
+            {site.address2.line1}
+            <br />
+            {site.address2.line2}
+          </a>
+          <span className="mt-1 block text-[0.85rem] text-muted">A {site.professional} atende neste endereço a cada quinze dias.</span>
+          <ul className="mt-4 grid max-w-sm grid-cols-4 gap-2">
+            {saPhotos.map(([src, alt]) => (
+              <li key={src} className="aspect-[3/4] overflow-hidden rounded-xl bg-paper">
+                <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover" />
+              </li>
+            ))}
+          </ul>
+        </>
       ),
     },
     {
@@ -39,7 +71,7 @@ export function Location() {
             <h2 id="loc-title" className="title mt-6 text-[length:var(--text-h2)]">
               Onde <span className="accent accent-dark">estamos</span>
             </h2>
-            <p className="mt-4 text-muted">{site.name}, com a {site.professional}, no Centro de Salto, SP.</p>
+            <p className="mt-4 text-muted">{site.name}, com a {site.professional}, no Centro de Salto, SP, e quinzenalmente em Santo André, SP.</p>
 
             <dl className="mt-9 space-y-5">
               {info.map(({ icon: Icon, label, body }) => (

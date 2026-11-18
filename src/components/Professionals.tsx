@@ -55,12 +55,14 @@ const pros: Pro[] = [
   {
     id: 'medico',
     name: DOCTOR_NAME,
-    role: 'Médico · Medicina de Família e Comunidade',
+    role: 'Médico · CRM-SP 286116',
     bio: [
-      'Médico pós-graduado em Medicina de Família e Comunidade (MFC) pela UNIFESP, oferece atendimento humanizado e integral, com foco na pessoa, não apenas na doença.',
-      'Suas consultas são voltadas para Atenção Primária, Saúde Mental, promoção da saúde e bem-estar, incluindo investigação clínica e avaliação hormonal individualizada, com prevenção, diagnóstico preciso e acompanhamento contínuo.',
+      'Formado pela Kursk State Medical University, na Rússia, com pós-graduação em Medicina de Família e Comunidade pela UNIFESP e experiência na Atenção Primária à Saúde pelo Programa Mais Médicos.',
+      'Acredita que cuidar da saúde é olhar para além dos sintomas: compreender a história, os hábitos e as necessidades de cada pessoa.',
+      'Na SHIN Conceito, oferece consultas individualizadas com foco em prevenção, avaliação clínica, saúde metabólica, acompanhamento do emagrecimento e avaliação hormonal.',
+      'Porque cuidar de si não deve começar apenas quando algo incomoda. Deve começar com atenção, conhecimento e escolhas conscientes.',
     ],
-    areas: ['Atenção Primária', 'Saúde Mental', 'Avaliação Hormonal', 'Promoção da Saúde'],
+    areas: ['Prevenção', 'Avaliação Clínica', 'Saúde Metabólica', 'Emagrecimento', 'Avaliação Hormonal'],
     cta: 'Agendar consulta médica',
     message: `Olá! Gostaria de agendar uma consulta com o ${DOCTOR_NAME} na Shin Conceito Institute.`,
     photo: (
