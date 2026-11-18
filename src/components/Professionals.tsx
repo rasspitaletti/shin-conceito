@@ -87,6 +87,11 @@ const pros: Pro[] = [
             className="h-full w-full object-cover object-[50%_22%]"
           />
         </div>
+        <div className="glass absolute bottom-5 left-5 z-[3] max-w-[55%] rounded-2xl px-5 py-4 shadow-[var(--shadow-soft)] sm:left-7">
+          <p className="text-[0.7rem] uppercase tracking-[0.08em] text-ink/75">Médico</p>
+          <p className="mt-1 text-[1.05rem] leading-tight">Cuidado integral</p>
+          <p className="mt-0.5 text-[0.82rem] leading-tight text-ink/75">Saúde e bem-estar</p>
+        </div>
       </>
     ),
   },
