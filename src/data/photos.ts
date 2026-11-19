@@ -23,6 +23,8 @@ import ambSala from '../assets/img/ambiente-sala.jpg'
 import ambBancada from '../assets/img/ambiente-bancada.jpg'
 import ambVitrine from '../assets/img/ambiente-vitrine.jpg'
 import ambCertificados from '../assets/img/ambiente-certificados.jpg'
+import saRecepcao from '../assets/img/sa-recepcao.jpg'
+import saSala from '../assets/img/sa-sala.jpg'
 
 export type Photo = { id?: string; src?: string; alt: string; pos?: string }
 export type GalleryPhoto = Photo & { title: string; text: string }
@@ -46,6 +48,9 @@ export const photos = {
   ambiente: { src: ambSala, alt: 'Sala de atendimento da clínica, com cadeira de procedimento branca, luminária e quadros de harmonização facial na parede', pos: '50% 60%' },
   clinicaSala: { src: ambBancada, alt: 'Bancada da clínica com produtos de skincare e bandeja com copos e balas para as pacientes', pos: '50% 75%' },
   clinicaRecepcao: { src: ambVitrine, alt: 'Vitrine iluminada com produtos Anna Pegova, ao lado de parede ripada de madeira e uma planta', pos: '50% 45%' },
+  // Santo André: alternam com as fotos de Salto na seção Experiência
+  saRecepcao: { src: saRecepcao, alt: 'Recepção da clínica em Santo André, com café e água para as pacientes' },
+  saSala: { src: saSala, alt: 'Sala de atendimento com maca, em Santo André' },
   agendamento: { src: ambCertificados, alt: 'Certificados da Dra. Patrícia Silva emoldurados, com a frase "Aqui tem Deus em cada detalhe" à frente' },
 } satisfies Record<string, Photo>
 

@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import { Ear, FlaskConical, Leaf, Route } from 'lucide-react'
-import { photos } from '../data/photos'
+import { photos, type Photo } from '../data/photos'
 import { Img } from './Img'
 import { Notch } from './Notch'
 import { SectionLabel } from './SectionLabel'
@@ -10,6 +11,26 @@ const items = [
   { icon: Leaf, title: 'Naturalidade', text: 'Valorizar seus traços, sem padronizar rostos.' },
   { icon: FlaskConical, title: 'Ciência e segurança', text: 'Conhecimento técnico como base de cada decisão.' },
 ]
+
+/** Alterna as fotos (Salto e Santo André) com um cruzamento suave; parado se o usuário pediu menos movimento. */
+function Alternating({ list, width, sizes }: { list: Photo[]; width: number; sizes: string }) {
+  const [shown, setShown] = useState(0)
+  useEffect(() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const t = setInterval(() => setShown((n) => (n + 1) % list.length), 5000)
+    return () => clearInterval(t)
+  }, [list.length])
+  return list.map((photo, n) => (
+    <Img
+      key={photo.src}
+      photo={photo}
+      width={width}
+      sizes={sizes}
+      className={`absolute inset-0 h-full w-full object-cover ${n === shown ? 'opacity-100' : 'opacity-0'}`}
+      style={{ transition: 'opacity 1.2s ease, transform 1.2s var(--ease-soft)' }}
+    />
+  ))
+}
 
 /** Diferenciais e experiência de atendimento. */
 export function Experience() {
@@ -39,13 +60,13 @@ export function Experience() {
 
           <div data-reveal className="mt-14 grid gap-3 md:grid-cols-[1.55fr_1fr] lg:mt-20">
             <figure className="img-zoom relative h-[clamp(14rem,30vw,26rem)] overflow-hidden rounded-[1.4rem] bg-olive">
-              <Img photo={photos.clinicaSala} width={1100} sizes="(min-width:768px) 60vw, 100vw" className="h-full w-full object-cover" />
+              <Alternating list={[photos.clinicaSala, photos.saRecepcao]} width={1100} sizes="(min-width:768px) 60vw, 100vw" />
               <figcaption className="glass-dark absolute left-4 top-4 max-w-[220px] rounded-2xl p-4 text-[0.95rem] leading-snug">
                 Um espaço pensado para o seu bem-estar.
               </figcaption>
             </figure>
             <div className="img-zoom relative h-[clamp(14rem,30vw,26rem)] overflow-hidden rounded-[1.4rem] bg-olive">
-              <Img photo={photos.clinicaRecepcao} width={800} sizes="(min-width:768px) 40vw, 100vw" className="h-full w-full object-cover" />
+              <Alternating list={[photos.clinicaRecepcao, photos.saSala]} width={800} sizes="(min-width:768px) 40vw, 100vw" />
             </div>
           </div>
 
